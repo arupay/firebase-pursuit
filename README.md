@@ -8,6 +8,10 @@ Quick links
 [Auth State](auth-and-state)
 [Summary](#putting-it-all-together)
 
+NOTE: This repo is a run through completion of the original repo below:
+
+https://github.com/mckiernantim/firebase-react
+
 This project will walk you through the steps to set up User Authentiaction via Google sign in using Firebase, React and React Context.
 
 ## What is authentication?
