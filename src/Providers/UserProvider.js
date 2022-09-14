@@ -21,7 +21,8 @@ export const UserContext = createContext(null);
 export const UserProvider = (props) => {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
+    //listen for changes
+    auth.onAuthStateChanged((user) => {
       if (user) {
         const { email, displayName, photoURL, uid } = user;
         setUser({ email, displayName, photoURL, uid });

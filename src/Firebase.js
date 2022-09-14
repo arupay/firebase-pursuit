@@ -1,8 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  signOut,
+} from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,6 +22,8 @@ const firebaseConfig = {
 
 // Initialize Firebase , much like express server
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+console.log(analytics);
 
 //create an instance of authentication and set default language
 export const auth = getAuth();
@@ -30,7 +38,7 @@ const googleProvider = new GoogleAuthProvider();
 export const signInWithGoogle = () => {
   try {
     //the signInWithPopUp() method accepts ANY provider we create. this is authentication logic
-    signInWithPopup(googleProvider, auth).then((res) => {
+    signInWithPopup(auth, googleProvider).then((res) => {
       const user = res.user;
       console.log(user);
     });
@@ -41,10 +49,10 @@ export const signInWithGoogle = () => {
 
 //Sign Out Method
 
-export const signOut = async () => {
+export const logOut = async () => {
   try {
-    await auth.signOut();
-    alert("You've signed out - congrats.");
+    await signOut(auth);
+    alert("you've signed out - congrats.");
   } catch (err) {
     console.log(err);
   }

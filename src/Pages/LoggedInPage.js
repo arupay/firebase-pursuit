@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../Providers/UserProvider";
 import { useNavigate } from "react-router-dom";
-import { signOut } from "../Firebase";
+import { logOut } from "../Firebase";
 
 export const LoggedInPage = () => {
   const imgStyle = {
@@ -13,14 +13,12 @@ export const LoggedInPage = () => {
 
   useEffect(() => {
     if (!user) {
-      alert("not logged in - redirecting");
       navigate("/");
     }
   }, [user, navigate]);
 
   const handleLogout = async () => {
-    signOut();
-    alert("you've been logged out");
+    logOut();
   };
   if (user) {
     return (
