@@ -16,7 +16,8 @@ export const Login = () => {
     <div>
       <section>
         <div>
-          <button onClick={signInWithGoogle}>Sign in With google</button>
+          Text here
+          <button onClick={signInWithGoogle}>Sign in With GOOGLE</button>
           <button onClick={logOut}> sign out</button>
         </div>
       </section>
